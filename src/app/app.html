@@ -1,3 +1,9 @@
 <p>Hello world!</p>
+@if (showNavbar) {<app-navbar></app-navbar>}
+<!-- Desta forma o componente é inicializado de forma condicional -->
 
-<app-navbar></app-navbar>
+<!-- <app-navbar *ngIf="showNavbar"></app-navbar> -->
+<!-- Mesmo resultado do código anterior, essa era a forma antiga de fazer -->
+
+<!-- <app-navbar [hidden]="showNavbar"></app-navbar> -->
+<!-- Desta forma o componente é inicializado, mas não é mostrado em tela (ou seja, não será mostrado em tela mas suas funções internas serão executadas, ex: ngOnInit) -->
