@@ -1,1 +1,32 @@
-<p>navbar works!</p>
+<nav class="py-4 pl-6 pr-12 bg-white border-b border-gray-100">
+  <div class="flex flex-row items-center justify-between max-w-6xl mx-auto">
+    <!-- LOGO -->
+    <div class="flex items-center"><a href="/">
+      <img src="/logo.svg" alt="logo" class="w-10">
+    </a></div>
+
+    <ul class="flex flex-row items-center gap-6">
+      <li>
+        <a
+          href="#"
+          class="flex flex-row gap-1.5 text-gray-200 transition-colors hover:text-gray-300 hover:data-[is-active=true]:text-gray-300 data-[is-active=true]:text-blue-base"
+          data-is-active="true"
+        >
+          <i class="ph ph-medal text-xl"></i>
+          <span class="text-sm font-semibold">Lista de certificados</span>
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="#"
+          class="flex flex-row gap-1.5 text-gray-200 transition-colors hover:text-gray-300 hover:data-[is-active=true]:text-gray-300 data-[is-active=true]:text-blue-base"
+          data-is-active="false"
+        >
+          <i class="ph ph-circles-three-plus text-xl "></i>
+          <span class="text-sm font-semibold">Gerar certificado</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
