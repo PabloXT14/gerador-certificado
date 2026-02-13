@@ -4,10 +4,11 @@ import { CommonModule } from "@angular/common"
 
 import { Navbar } from "./components/navbar/navbar"
 import { PrimaryButton } from "./components/primary-button/primary-button"
+import { SecondaryButton } from "./components/secondary-button/secondary-button"
 
 @Component({
   selector: "app-root",
-  imports: [RouterOutlet, Navbar, CommonModule, PrimaryButton],
+  imports: [RouterOutlet, Navbar, CommonModule, PrimaryButton, SecondaryButton],
   templateUrl: "./app.html",
   styleUrl: "./app.css",
 })
