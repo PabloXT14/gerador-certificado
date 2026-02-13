@@ -6,6 +6,7 @@ import { Navbar } from "./components/navbar/navbar"
 import { PrimaryButton } from "./components/primary-button/primary-button"
 import { SecondaryButton } from "./components/secondary-button/secondary-button"
 import { CertificateItem } from "./components/certificate-item/certificate-item"
+import { BaseLayout } from "./components/base-layout/base-layout"
 
 @Component({
   selector: "app-root",
@@ -16,6 +17,7 @@ import { CertificateItem } from "./components/certificate-item/certificate-item"
     PrimaryButton,
     SecondaryButton,
     CertificateItem,
+    BaseLayout,
   ],
   templateUrl: "./app.html",
   styleUrl: "./app.css",
