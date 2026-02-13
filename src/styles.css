@@ -13,3 +13,10 @@
   --color-danger-base: #E95F5F;
   --color-danger-dark: #D71D1D;
 }
+
+
+@layer base {
+  button {
+    @apply cursor-pointer;
+  }
+}

@@ -3,10 +3,11 @@ import { RouterOutlet } from "@angular/router"
 import { CommonModule } from "@angular/common"
 
 import { Navbar } from "./components/navbar/navbar"
+import { PrimaryButton } from "./components/primary-button/primary-button"
 
 @Component({
   selector: "app-root",
-  imports: [RouterOutlet, Navbar, CommonModule],
+  imports: [RouterOutlet, Navbar, CommonModule, PrimaryButton],
   templateUrl: "./app.html",
   styleUrl: "./app.css",
 })
