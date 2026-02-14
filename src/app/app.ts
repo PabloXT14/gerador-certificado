@@ -3,22 +3,12 @@ import { RouterOutlet } from "@angular/router"
 import { CommonModule } from "@angular/common"
 
 import { Navbar } from "./components/navbar/navbar"
-import { PrimaryButton } from "./components/primary-button/primary-button"
-import { SecondaryButton } from "./components/secondary-button/secondary-button"
-import { CertificateItem } from "./components/certificate-item/certificate-item"
 import { BaseLayout } from "./components/base-layout/base-layout"
+import { Certificates } from "./pages/certificates/certificates"
 
 @Component({
   selector: "app-root",
-  imports: [
-    RouterOutlet,
-    Navbar,
-    CommonModule,
-    PrimaryButton,
-    SecondaryButton,
-    CertificateItem,
-    BaseLayout,
-  ],
+  imports: [RouterOutlet, Navbar, CommonModule, BaseLayout, Certificates],
   templateUrl: "./app.html",
   styleUrl: "./app.css",
 })
