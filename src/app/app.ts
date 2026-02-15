@@ -5,10 +5,18 @@ import { CommonModule } from "@angular/common"
 import { Navbar } from "./components/navbar/navbar"
 import { BaseLayout } from "./components/base-layout/base-layout"
 import { Certificates } from "./pages/certificates/certificates"
+import { CertificateForm } from "./pages/certificate-form/certificate-form"
 
 @Component({
   selector: "app-root",
-  imports: [RouterOutlet, Navbar, CommonModule, BaseLayout, Certificates],
+  imports: [
+    RouterOutlet,
+    Navbar,
+    CommonModule,
+    BaseLayout,
+    Certificates,
+    CertificateForm,
+  ],
   templateUrl: "./app.html",
   styleUrl: "./app.css",
 })
