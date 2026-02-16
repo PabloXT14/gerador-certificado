@@ -6,6 +6,7 @@ import { Navbar } from "./components/navbar/navbar"
 import { BaseLayout } from "./components/base-layout/base-layout"
 import { Certificates } from "./pages/certificates/certificates"
 import { CertificateForm } from "./pages/certificate-form/certificate-form"
+import { Certificate } from "./pages/certificate/certificate"
 
 @Component({
   selector: "app-root",
@@ -16,6 +17,7 @@ import { CertificateForm } from "./pages/certificate-form/certificate-form"
     BaseLayout,
     Certificates,
     CertificateForm,
+    Certificate,
   ],
   templateUrl: "./app.html",
   styleUrl: "./app.css",
