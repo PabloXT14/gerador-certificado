@@ -17,10 +17,10 @@
     <div class="flex flex-col gap-5">
       <h2 class="text-blue-dark text-lg font-bold">Novo certificado</h2>
 
-      <fieldset class="group flex flex-col gap-2">
+      <fieldset class="group flex flex-col gap-2" data-error="false">
         <label
           for="student-name"
-          class="text-blue-dark text-sm font-medium group-focus-within:text-blue-base"
+          class="text-blue-dark text-sm font-medium group-focus-within:text-blue-base group-data-[error=true]:text-danger-dark"
         >
           Nome completo
         </label>
@@ -32,13 +32,22 @@
           class="px-3 py-2 border border-gray-100 rounded-md text-base text-gray-300 placeholder:text-gray-200 transition-colors focus:outline-none focus:border-blue-base"
           required
         >
+
+        <!-- ERROR MESSAGE -->
+        <div
+          class="hidden flex-row items-center gap-1 text-danger-dark group-data-[error=true]:flex"
+        >
+          <i class="ph ph-warning-circle text-base"></i>
+
+          <span class="text-xs"> Error message </span>
+        </div>
       </fieldset>
 
       <div class="flex gap-2 items-end">
-        <fieldset class="group flex flex-col gap-2 flex-1">
+        <fieldset class="group flex flex-col gap-2 flex-1" data-error="true">
           <label
             for="activity-name"
-            class="text-blue-dark text-sm font-medium group-focus-within:text-blue-base"
+            class="text-blue-dark text-sm font-medium group-focus-within:text-blue-base group-data-[error=true]:text-danger-dark"
           >
             Atividade
           </label>
@@ -50,6 +59,15 @@
             class="px-3 py-2 border border-gray-100 rounded-md text-base text-gray-300 placeholder:text-gray-200 transition-colors focus:outline-none focus:border-blue-base"
             required
           >
+
+          <!-- ERROR MESSAGE -->
+          <div
+            class="hidden flex-row items-center gap-1 text-danger-dark group-data-[error=true]:flex"
+          >
+            <i class="ph ph-warning-circle text-base"></i>
+
+            <span class="text-xs"> Error message </span>
+          </div>
         </fieldset>
 
         <app-secondary-button></app-secondary-button>
