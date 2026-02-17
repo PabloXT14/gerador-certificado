@@ -12,6 +12,9 @@
 
   --color-danger-base: #E95F5F;
   --color-danger-dark: #D71D1D;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-dancing-script: 'Dancing Script', cursive;
 }
 
 
