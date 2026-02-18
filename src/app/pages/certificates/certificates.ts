@@ -8,4 +8,6 @@ import { CertificateItem } from "@/app/components/certificate-item/certificate-i
   templateUrl: "./certificates.html",
   styleUrl: "./certificates.css",
 })
-export class Certificates {}
+export class Certificates {
+  isEmpty = false
+}

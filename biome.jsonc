@@ -17,7 +17,9 @@
   "linter": {
     "rules": {
       "style": {
-        "noEnum": "off"
+        "noEnum": "off",
+        "useReadonlyClassProperties": "off",
+        "noParameterProperties": "off"
       },
       "correctness": {
         "useExhaustiveDependencies": "info"
