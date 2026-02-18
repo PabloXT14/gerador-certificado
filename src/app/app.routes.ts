@@ -1,3 +1,20 @@
 import type { Routes } from "@angular/router"
 
-export const routes: Routes = []
+import { Certificates } from "./pages/certificates/certificates"
+import { CertificateForm } from "./pages/certificate-form/certificate-form"
+import { Certificate } from "./pages/certificate/certificate"
+
+export const routes: Routes = [
+  {
+    path: "",
+    component: Certificates,
+  },
+  {
+    path: "certificados/novo",
+    component: CertificateForm,
+  },
+  {
+    path: "certificados/:id",
+    component: Certificate,
+  },
+]
