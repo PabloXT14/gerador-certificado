@@ -10,16 +10,21 @@
 
   <!-- FORM -->
   <form
+    novalidate
+    #form="ngForm"
     class="w-full flex flex-col gap-8 border border-gray-100 rounded-lg p-8 max-w-2xl"
   >
     <!-- CONTENT -->
     <div class="flex flex-col gap-5">
       <h2 class="text-blue-dark text-lg font-bold">Novo certificado</h2>
 
-      <fieldset class="group flex flex-col gap-2" data-error="false">
+      <fieldset class="group flex flex-col gap-2">
         <label
           for="student-name"
-          class="text-blue-dark text-sm font-medium group-focus-within:text-blue-base group-data-[error=true]:text-danger-dark"
+          class="text-blue-dark text-sm font-medium group-focus-within:text-blue-base"
+          [ngClass]="{
+            'text-danger-dark': isFieldInvalid(studentNameRef)
+          }"
         >
           Nome completo
         </label>
@@ -30,27 +35,28 @@
           name="student-name"
           placeholder="Digite o nome completo do aluno"
           class="px-3 py-2 border border-gray-100 rounded-md text-base text-gray-300 placeholder:text-gray-200 transition-colors focus:outline-none focus:border-blue-base"
-          required
           [(ngModel)]="studentName"
+          #studentNameRef="ngModel"
+          maxlength="150"
+          required=""
         >
-
-        <span>{{ studentName }}</span>
-
-        <!-- ERROR MESSAGE -->
-        <div
-          class="hidden flex-row items-center gap-1 text-danger-dark group-data-[error=true]:flex"
-        >
+        @if(isFieldInvalid(studentNameRef)) {
+        <div class="flex flex-row items-center gap-1 text-danger-dark">
           <i class="ph ph-warning-circle text-base"></i>
 
-          <span class="text-xs"> Error message </span>
+          <span class="text-xs"> O campo nome completo é obrigatório </span>
         </div>
+        }
       </fieldset>
 
       <div class="flex gap-2 items-end">
-        <fieldset class="group flex flex-col gap-2 flex-1" data-error="false">
+        <fieldset class="group flex flex-col gap-2 flex-1">
           <label
             for="activity-name"
-            class="text-blue-dark text-sm font-medium group-focus-within:text-blue-base group-data-[error=true]:text-danger-dark"
+            class="text-blue-dark text-sm font-medium group-focus-within:text-blue-base"
+            [ngClass]="{
+              'text-danger-dark': isFieldInvalid(activityNameRef)
+            }"
           >
             Atividade
           </label>
@@ -61,21 +67,26 @@
             name="activity-name"
             placeholder="Digite o título da atividade"
             class="px-3 py-2 border border-gray-100 rounded-md text-base text-gray-300 placeholder:text-gray-200 transition-colors focus:outline-none focus:border-blue-base"
-            required
             [(ngModel)]="activityName"
+            #activityNameRef="ngModel"
+            maxlength="150"
+            required
           >
+          @if(isFieldInvalid(activityNameRef)) {
 
-          <!-- ERROR MESSAGE -->
-          <div
-            class="hidden flex-row items-center gap-1 text-danger-dark group-data-[error=true]:flex"
-          >
+          <div class="flex flex-row items-center gap-1 text-danger-dark">
             <i class="ph ph-warning-circle text-base"></i>
 
-            <span class="text-xs"> Error message </span>
+            <span class="text-xs"> O campo atividade é obrigatório </span>
           </div>
+          }
         </fieldset>
 
-        <app-secondary-button></app-secondary-button>
+        <app-secondary-button
+          [ngClass]="{
+          'mb-6' : isFieldInvalid(activityNameRef)
+        }"
+        ></app-secondary-button>
       </div>
 
       <!-- ACTIVITIES LIST -->
