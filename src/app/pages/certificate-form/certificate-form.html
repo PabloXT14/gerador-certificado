@@ -10,7 +10,6 @@
 
   <!-- FORM -->
   <form
-    action=""
     class="w-full flex flex-col gap-8 border border-gray-100 rounded-lg p-8 max-w-2xl"
   >
     <!-- CONTENT -->
@@ -28,10 +27,14 @@
         <input
           type="text"
           id="student-name"
+          name="student-name"
           placeholder="Digite o nome completo do aluno"
           class="px-3 py-2 border border-gray-100 rounded-md text-base text-gray-300 placeholder:text-gray-200 transition-colors focus:outline-none focus:border-blue-base"
           required
+          [(ngModel)]="studentName"
         >
+
+        <span>{{ studentName }}</span>
 
         <!-- ERROR MESSAGE -->
         <div
@@ -55,9 +58,11 @@
           <input
             type="text"
             id="activity-name"
+            name="activity-name"
             placeholder="Digite o título da atividade"
             class="px-3 py-2 border border-gray-100 rounded-md text-base text-gray-300 placeholder:text-gray-200 transition-colors focus:outline-none focus:border-blue-base"
             required
+            [(ngModel)]="activityName"
           >
 
           <!-- ERROR MESSAGE -->
@@ -80,9 +85,9 @@
         </label>
 
         <div class="p-4 border border-gray-100 rounded-lg">
-          <!-- ITEM -->
+          @for (item of activities; track $index) {<!-- ITEM -->
           <div class="flex items-center">
-            <span class="flex-1 text-gray-300 text-base">Atividade 1</span>
+            <span class="flex-1 text-gray-300 text-base">{{ item }}</span>
 
             <button
               type="button"
@@ -91,36 +96,9 @@
               <i class="ph ph-x text-xl text-danger-base"></i>
             </button>
           </div>
-
           <!-- DIVIDER -->
-          <div class="w-full h-px bg-gray-100 my-3"></div>
-
-          <!-- ITEM -->
-          <div class="flex items-center">
-            <span class="flex-1 text-gray-300 text-base">Atividade 1</span>
-
-            <button
-              type="button"
-              class="size-6 flex items-center justify-center rounded-sm transition-colors hover:bg-gray-100"
-            >
-              <i class="ph ph-x text-xl text-danger-base"></i>
-            </button>
-          </div>
-
-          <!-- DIVIDER -->
-          <div class="w-full h-px bg-gray-100 my-3"></div>
-
-          <!-- ITEM -->
-          <div class="flex items-center">
-            <span class="flex-1 text-gray-300 text-base">Atividade 1</span>
-
-            <button
-              type="button"
-              class="size-6 flex items-center justify-center rounded-sm transition-colors hover:bg-gray-100"
-            >
-              <i class="ph ph-x text-xl text-danger-base"></i>
-            </button>
-          </div>
+          @if(activities.length - 1 !== $index) {
+          <div class="w-full h-px bg-gray-100 my-3"></div>} }
         </div>
       </div>
     </div>
