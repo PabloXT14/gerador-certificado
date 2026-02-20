@@ -23,7 +23,10 @@
       </span>
     </div>
 
-    <app-secondary-button></app-secondary-button>
+    <app-secondary-button
+      label="Gerar certificado"
+      routerLink="/certificados/novo"
+    ></app-secondary-button>
   </div>
   } @else {<!-- CERTIFICATES LIST -->
   <div class="max-w-2xl w-full flex flex-col gap-2">
@@ -31,5 +34,6 @@
     <app-certificate-item></app-certificate-item>
     <app-certificate-item></app-certificate-item>
     <app-certificate-item></app-certificate-item>
-  </div>}
+  </div>
+  }
 </div>

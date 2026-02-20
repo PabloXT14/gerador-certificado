@@ -54,9 +54,6 @@
           <label
             for="activity-name"
             class="text-blue-dark text-sm font-medium group-focus-within:text-blue-base"
-            [ngClass]="{
-              'text-danger-dark': isFieldInvalid(activityNameRef)
-            }"
           >
             Atividade
           </label>
@@ -68,24 +65,15 @@
             placeholder="Digite o título da atividade"
             class="px-3 py-2 border border-gray-100 rounded-md text-base text-gray-300 placeholder:text-gray-200 transition-colors focus:outline-none focus:border-blue-base"
             [(ngModel)]="activityName"
-            #activityNameRef="ngModel"
             maxlength="150"
             required
           >
-          @if(isFieldInvalid(activityNameRef)) {
-
-          <div class="flex flex-row items-center gap-1 text-danger-dark">
-            <i class="ph ph-warning-circle text-base"></i>
-
-            <span class="text-xs"> O campo atividade é obrigatório </span>
-          </div>
-          }
         </fieldset>
 
         <app-secondary-button
-          [ngClass]="{
-          'mb-6' : isFieldInvalid(activityNameRef)
-        }"
+          label="Adicionar"
+          phClass="ph-plus"
+          [disabled]="!activityName"
         ></app-secondary-button>
       </div>
 
@@ -114,6 +102,9 @@
       </div>
     </div>
 
-    <app-primary-button>Gerar certificado</app-primary-button>
+    <app-primary-button
+      label="Gerar certificado"
+      [disabled]="isFormInvalid()"
+    ></app-primary-button>
   </form>
 </div>

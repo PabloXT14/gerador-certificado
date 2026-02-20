@@ -19,4 +19,8 @@ export class CertificateForm {
   isFieldInvalid(control: NgModel) {
     return control.invalid && control.touched
   }
+
+  isFormInvalid() {
+    return !this.studentName || this.activities.length === 0
+  }
 }
