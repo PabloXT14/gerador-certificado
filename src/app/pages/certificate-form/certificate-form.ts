@@ -14,7 +14,7 @@ import { SecondaryButton } from "@/app/components/secondary-button/secondary-but
 export class CertificateForm {
   studentName = ""
   activityName = ""
-  activities: string[] = ["Atividade 1", "Atividade 2", "Atividade 3"]
+  activities: string[] = []
 
   isFieldInvalid(control: NgModel) {
     return control.invalid && control.touched
@@ -22,5 +22,14 @@ export class CertificateForm {
 
   isFormInvalid() {
     return !this.studentName || this.activities.length === 0
+  }
+
+  addActivity() {
+    this.activities.push(this.activityName)
+    this.activityName = ""
+  }
+
+  removeActivity(index: number) {
+    this.activities.splice(index, 1)
   }
 }

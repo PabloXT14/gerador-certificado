@@ -74,6 +74,7 @@
           label="Adicionar"
           phClass="ph-plus"
           [disabled]="!activityName"
+          (click)="addActivity()"
         ></app-secondary-button>
       </div>
 
@@ -89,6 +90,7 @@
             <span class="flex-1 text-gray-300 text-base">{{ item }}</span>
 
             <button
+              (click)="removeActivity($index)"
               type="button"
               class="size-6 flex items-center justify-center rounded-sm transition-colors hover:bg-gray-100"
             >
