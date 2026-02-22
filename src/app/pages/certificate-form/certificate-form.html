@@ -35,7 +35,7 @@
           name="student-name"
           placeholder="Digite o nome completo do aluno"
           class="px-3 py-2 border border-gray-100 rounded-md text-base text-gray-300 placeholder:text-gray-200 transition-colors focus:outline-none focus:border-blue-base"
-          [(ngModel)]="studentName"
+          [(ngModel)]="certificate.studentName"
           #studentNameRef="ngModel"
           maxlength="150"
           required=""
@@ -85,7 +85,7 @@
         </label>
 
         <div class="p-4 border border-gray-100 rounded-lg">
-          @for (item of activities; track $index) {<!-- ITEM -->
+          @for (item of certificate.activities; track $index) {<!-- ITEM -->
           <div class="flex items-center">
             <span class="flex-1 text-gray-300 text-base">{{ item }}</span>
 
@@ -98,7 +98,7 @@
             </button>
           </div>
           <!-- DIVIDER -->
-          @if(activities.length - 1 !== $index) {
+          @if(certificate.activities.length - 1 !== $index) {
           <div class="w-full h-px bg-gray-100 my-3"></div>} }
         </div>
       </div>
@@ -107,6 +107,7 @@
     <app-primary-button
       label="Gerar certificado"
       [disabled]="isFormInvalid()"
+      (click)="onSubmit()"
     ></app-primary-button>
   </form>
 </div>

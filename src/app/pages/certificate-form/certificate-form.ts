@@ -4,6 +4,7 @@ import { NgClass } from "@angular/common"
 
 import { PrimaryButton } from "@/app/components/primary-button/primary-button"
 import { SecondaryButton } from "@/app/components/secondary-button/secondary-button"
+import type { Certificate } from "@/app/interfaces/certificate"
 
 @Component({
   selector: "app-certificate-form",
@@ -12,24 +13,43 @@ import { SecondaryButton } from "@/app/components/secondary-button/secondary-but
   styleUrl: "./certificate-form.css",
 })
 export class CertificateForm {
-  studentName = ""
   activityName = ""
-  activities: string[] = []
+
+  certificate: Certificate = {
+    id: "",
+    studentName: "",
+    activities: [],
+  }
 
   isFieldInvalid(control: NgModel) {
     return control.invalid && control.touched
   }
 
   isFormInvalid() {
-    return !this.studentName || this.activities.length === 0
+    return (
+      !this.certificate.studentName || this.certificate.activities.length === 0
+    )
   }
 
   addActivity() {
-    this.activities.push(this.activityName)
+    this.certificate.activities.push(this.activityName)
     this.activityName = ""
   }
 
   removeActivity(index: number) {
-    this.activities.splice(index, 1)
+    this.certificate.activities.splice(index, 1)
+  }
+
+  onSubmit() {
+    if (this.isFormInvalid()) {
+      return
+    }
+
+    this.certificate = {
+      ...this.certificate,
+      id: crypto.randomUUID(),
+    }
+
+    console.log("CERTIFICATE: ", this.certificate)
   }
 }
