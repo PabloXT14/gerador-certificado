@@ -10,5 +10,5 @@ import { RouterLink } from "@angular/router"
   styleUrl: "./certificates.css",
 })
 export class Certificates {
-  isEmpty = true
+  isEmpty = false
 }

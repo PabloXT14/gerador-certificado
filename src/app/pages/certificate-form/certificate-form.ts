@@ -4,6 +4,10 @@ import { NgClass } from "@angular/common"
 
 import { PrimaryButton } from "@/app/components/primary-button/primary-button"
 import { SecondaryButton } from "@/app/components/secondary-button/secondary-button"
+
+// biome-ignore lint/style/useImportType: need to import the type for the constructor
+import { CertificateService } from "@/app/services/certificate"
+
 import type { Certificate } from "@/app/interfaces/certificate"
 
 @Component({
@@ -19,7 +23,10 @@ export class CertificateForm {
     id: "",
     studentName: "",
     activities: [],
+    createdAt: "",
   }
+
+  constructor(private certificateService: CertificateService) {}
 
   isFieldInvalid(control: NgModel) {
     return control.invalid && control.touched
@@ -48,8 +55,9 @@ export class CertificateForm {
     this.certificate = {
       ...this.certificate,
       id: crypto.randomUUID(),
+      createdAt: new Date().toISOString(),
     }
 
-    console.log("CERTIFICATE: ", this.certificate)
+    this.certificateService.addCertificate(this.certificate)
   }
 }
