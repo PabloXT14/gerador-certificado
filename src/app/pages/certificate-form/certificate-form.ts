@@ -1,5 +1,5 @@
-import { Component } from "@angular/core"
-import { FormsModule, type NgModel } from "@angular/forms"
+import { Component, ViewChild } from "@angular/core"
+import { FormsModule, type NgForm, type NgModel } from "@angular/forms"
 import { NgClass } from "@angular/common"
 
 import { PrimaryButton } from "@/app/components/primary-button/primary-button"
@@ -25,6 +25,8 @@ export class CertificateForm {
     activities: [],
     createdAt: "",
   }
+
+  @ViewChild("form") form!: NgForm
 
   constructor(private certificateService: CertificateService) {}
 
@@ -52,12 +54,25 @@ export class CertificateForm {
       return
     }
 
-    this.certificate = {
+    const newCertificate = {
       ...this.certificate,
       id: crypto.randomUUID(),
       createdAt: new Date().toISOString(),
     }
 
-    this.certificateService.addCertificate(this.certificate)
+    this.certificateService.addCertificate(newCertificate)
+
+    this.resetForm()
+  }
+
+  resetForm() {
+    this.certificate = {
+      id: "",
+      studentName: "",
+      activities: [],
+      createdAt: "",
+    }
+
+    this.form.resetForm()
   }
 }

@@ -1,9 +1,12 @@
 import { Component, type OnInit } from "@angular/core"
 import { SecondaryButton } from "@/app/components/secondary-button/secondary-button"
-import { RouterLink } from "@angular/router"
+// biome-ignore lint/style/useImportType: need to import the type for the constructor
+import { ActivatedRoute, RouterLink } from "@angular/router"
 
 // biome-ignore lint/style/useImportType: need to import the type for the constructor
 import { CertificateService } from "@/app/services/certificate"
+
+import type { Certificate } from "@/app/interfaces/certificate"
 
 @Component({
   selector: "app-certificate",
@@ -11,10 +14,26 @@ import { CertificateService } from "@/app/services/certificate"
   templateUrl: "./certificate.html",
   styleUrl: "./certificate.css",
 })
-export class Certificate implements OnInit {
-  constructor(private certificateService: CertificateService) {}
+export class CertificateComponent implements OnInit {
+  certificateId: string | null = null
+  certificate: Certificate | undefined
+
+  constructor(
+    private certificateService: CertificateService,
+    private router: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.certificateService.certificates)
+    this.router.paramMap.subscribe((param) => {
+      this.certificateId = param.get("id")
+
+      if (this.certificateId) {
+        this.certificate = this.certificateService.getCertificateById(
+          this.certificateId
+        )
+      }
+    })
+
+    console.log("CERTIFICATE: ", this.certificate)
   }
 }

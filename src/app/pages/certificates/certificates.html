@@ -8,7 +8,7 @@
     </span>
   </div>
   <!-- EMPTY LIST -->
-  @if (isEmpty) {
+  @if (certificates.length === 0) {
   <div
     class="w-full flex flex-col items-center gap-5 border border-gray-100 rounded-lg px-8 pt-12 pb-14 max-w-2xl"
   >
@@ -30,10 +30,8 @@
   </div>
   } @else {<!-- CERTIFICATES LIST -->
   <div class="max-w-2xl w-full flex flex-col gap-2">
-    <app-certificate-item></app-certificate-item>
-    <app-certificate-item></app-certificate-item>
-    <app-certificate-item></app-certificate-item>
-    <app-certificate-item></app-certificate-item>
+    @for (item of certificates; track $index) {
+    <app-certificate-item [id]="item.id"></app-certificate-item>}
   </div>
   }
 </div>
