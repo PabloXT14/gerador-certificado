@@ -14,8 +14,8 @@
       phClass="ph-download-simple"
     ></app-secondary-button>
   </div>
-
   <!-- CERTIFICATE -->
+  @if (certificate) {
   <div class="overflow-y-auto">
     <div class="relative w-200 h-137.5 rounded-xl overflow-hidden p-10">
       <!-- BACKGROUND -->
@@ -48,7 +48,7 @@
           <h2
             class="text-blue-base text-[52px] leading-20 font-dancing-script font-bold text-center"
           >
-            Ana Silva Lopes
+            {{ certificate.studentName }}
           </h2>
 
           <!-- ACTIVITIES -->
@@ -58,10 +58,7 @@
             </span>
 
             <span class="text-gray-300 text-sm leading-[1.6] text-center">
-              Introdução ao Angular, Configuração com Angular CLI, Criação de
-              componentes reutilizáveis, Manipulação de dados, Implementação de
-              data binding, Criação de rotas com Angular Router, Consumo de APIs
-              REST
+              {{ certificate.activities.join(", ") }}
             </span>
           </div>
         </div>
@@ -71,7 +68,7 @@
           <span
             class="text-gray-300 text-xs leading-[1.6] font-bold text-center"
           >
-            Emitido em 25/04/2025
+            Emitido em {{ formattedDate }}
           </span>
         </div>
 
@@ -91,4 +88,5 @@
       </div>
     </div>
   </div>
+  }
 </div>

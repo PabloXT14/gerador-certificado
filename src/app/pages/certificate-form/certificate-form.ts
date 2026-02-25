@@ -1,6 +1,8 @@
 import { Component, ViewChild } from "@angular/core"
 import { FormsModule, type NgForm, type NgModel } from "@angular/forms"
 import { NgClass } from "@angular/common"
+// biome-ignore lint/style/useImportType: need to import the type for the constructor
+import { Router } from "@angular/router"
 
 import { PrimaryButton } from "@/app/components/primary-button/primary-button"
 import { SecondaryButton } from "@/app/components/secondary-button/secondary-button"
@@ -28,7 +30,10 @@ export class CertificateForm {
 
   @ViewChild("form") form!: NgForm
 
-  constructor(private certificateService: CertificateService) {}
+  constructor(
+    private certificateService: CertificateService,
+    private router: Router
+  ) {}
 
   isFieldInvalid(control: NgModel) {
     return control.invalid && control.touched
@@ -63,6 +68,8 @@ export class CertificateForm {
     this.certificateService.addCertificate(newCertificate)
 
     this.resetForm()
+
+    this.router.navigate(["/certificados", newCertificate.id])
   }
 
   resetForm() {

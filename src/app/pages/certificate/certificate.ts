@@ -2,6 +2,7 @@ import { Component, type OnInit } from "@angular/core"
 import { SecondaryButton } from "@/app/components/secondary-button/secondary-button"
 // biome-ignore lint/style/useImportType: need to import the type for the constructor
 import { ActivatedRoute, RouterLink } from "@angular/router"
+import dayjs from "dayjs"
 
 // biome-ignore lint/style/useImportType: need to import the type for the constructor
 import { CertificateService } from "@/app/services/certificate"
@@ -17,6 +18,7 @@ import type { Certificate } from "@/app/interfaces/certificate"
 export class CertificateComponent implements OnInit {
   certificateId: string | null = null
   certificate: Certificate | undefined
+  formattedDate = ""
 
   constructor(
     private certificateService: CertificateService,
@@ -32,8 +34,12 @@ export class CertificateComponent implements OnInit {
           this.certificateId
         )
       }
-    })
 
-    console.log("CERTIFICATE: ", this.certificate)
+      if (this.certificate) {
+        this.formattedDate = dayjs(this.certificate.createdAt).format(
+          "DD/MM/YYYY"
+        )
+      }
+    })
   }
 }

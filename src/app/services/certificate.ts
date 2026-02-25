@@ -11,7 +11,7 @@ export class CertificateService {
   certificates: Certificate[] = []
 
   addCertificate(certificate: Certificate) {
-    this.certificates.push({ ...certificate })
+    this.certificates.unshift({ ...certificate })
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(this.certificates))
   }

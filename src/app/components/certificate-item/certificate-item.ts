@@ -15,6 +15,7 @@ import type { Certificate } from "@/app/interfaces/certificate"
 })
 export class CertificateItem implements OnInit {
   @Input({ required: true }) certificateData!: Certificate
+  formattedDate = ""
 
   constructor(private router: Router) {}
 
@@ -25,9 +26,8 @@ export class CertificateItem implements OnInit {
   }
 
   ngOnInit(): void {
-    this.certificateData = {
-      ...this.certificateData,
-      createdAt: dayjs(this.certificateData.createdAt).format("DD/MM/YYYY"),
-    }
+    this.formattedDate = dayjs(this.certificateData.createdAt).format(
+      "DD/MM/YYYY"
+    )
   }
 }

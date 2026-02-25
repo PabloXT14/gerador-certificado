@@ -6,9 +6,7 @@
     <strong class="text-blue-dark text-sm font-bold">
       {{ certificateData.studentName }}
     </strong>
-    <span class="text-gray-200 text-xs">
-      Gerado em {{ certificateData.createdAt }}
-    </span>
+    <span class="text-gray-200 text-xs"> Gerado em {{ formattedDate }} </span>
   </div>
 
   <app-secondary-button (click)="redirectToCertificate()" label="Ver" />
