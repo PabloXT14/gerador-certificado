@@ -31,7 +31,7 @@
   } @else {<!-- CERTIFICATES LIST -->
   <div class="max-w-2xl w-full flex flex-col gap-2">
     @for (item of certificates; track $index) {
-    <app-certificate-item [id]="item.id"></app-certificate-item>}
+    <app-certificate-item [certificateData]="item"></app-certificate-item>}
   </div>
   }
 </div>
