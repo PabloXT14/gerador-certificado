@@ -10,13 +10,14 @@
     </a>
 
     <app-secondary-button
+      (click)="downloadCertificate()"
       label="Download"
       phClass="ph-download-simple"
     ></app-secondary-button>
   </div>
   <!-- CERTIFICATE -->
   @if (certificate) {
-  <div class="overflow-y-auto">
+  <div class="overflow-y-auto" #certificateContainer>
     <div class="relative w-200 h-137.5 rounded-xl overflow-hidden p-10">
       <!-- BACKGROUND -->
       <img
