@@ -1,13 +1,54 @@
 <nav class="bg-white border-b border-gray-100">
   <div
-    class="py-4 pl-6 pr-12 flex flex-row items-center justify-between max-w-7xl mx-auto"
+    class="py-4 pl-6 pr-12 flex flex-row items-center justify-between max-w-7xl mx-auto relative"
   >
     <!-- LOGO -->
     <div class="flex items-center"><a routerLink="/">
       <img src="/logo.svg" alt="logo" class="w-10">
     </a></div>
 
-    <ul class="flex flex-row items-center gap-6">
+    <!-- MOBILE BUTTON -->
+    <button (click)="toggleMenu()" class="md:hidden">
+      <i
+        class="ph text-2xl text-gray-200 transition-colors hover:text-gray-300"
+        [ngClass]="isOpen ? 'ph-x' : 'ph-list'"
+      ></i>
+    </button>
+
+    <!-- MOBILE MENU -->
+    <div
+      class="absolute top-18 left-0 md:hidden transition-all duration-300 ease-in-out w-full overflow-hidden shadow"
+      [ngClass]="isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'"
+    >
+      <ul class=" flex flex-col items-start gap-4 bg-white px-6 py-4">
+        <li><a
+          routerLink="/"
+          (click)="closeMenu()"
+          [ngClass]="
+            isRouterActive('/') ? 'text-blue-base' : 'text-gray-200'
+          "
+          class="flex flex-row gap-1.5 transition-colors hover:text-gray-300"
+        >
+          <i class="ph ph-medal text-xl"></i>
+          <span class="text-sm font-semibold">Lista de certificados</span>
+        </a></li>
+
+        <li><a
+          routerLink="/certificados/novo"
+          (click)="closeMenu()"
+          [ngClass]="
+            isRouterActive('/certificados/novo') ? 'text-blue-base' : 'text-gray-200'
+          "
+          class="flex flex-row gap-1.5 transition-colors hover:text-gray-300"
+        >
+          <i class="ph ph-circles-three-plus text-xl"></i>
+          <span class="text-sm font-semibold">Gerar certificado</span>
+        </a></li>
+      </ul>
+    </div>
+
+    <!-- DESKTOP MENU -->
+    <ul class="hidden md:flex flex-row items-center gap-6">
       <li><a
         routerLink="/"
         [ngClass]="
