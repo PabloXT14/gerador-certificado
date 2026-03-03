@@ -10,6 +10,10 @@ const STORAGE_KEY = "certificates"
 export class CertificateService {
   certificates: Certificate[] = []
 
+  updateLocalStorage() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.certificates))
+  }
+
   addCertificate(certificate: Certificate) {
     this.certificates.unshift({ ...certificate })
 
@@ -26,5 +30,13 @@ export class CertificateService {
     if (data) {
       this.certificates = JSON.parse(data)
     }
+  }
+
+  deleteCertificate(id: string) {
+    this.certificates = this.certificates.filter(
+      (certificate) => certificate.id !== id
+    )
+
+    this.updateLocalStorage()
   }
 }

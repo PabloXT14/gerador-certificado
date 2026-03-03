@@ -9,5 +9,17 @@
     <span class="text-gray-200 text-xs"> Gerado em {{ formattedDate }} </span>
   </div>
 
-  <app-secondary-button (click)="redirectToCertificate()" label="Ver" />
+  <div class="flex gap-2">
+    <app-secondary-button
+      (click)="redirectToCertificate()"
+      phClass="ph-eye"
+      className="p-2.5"
+    />
+
+    <app-secondary-button
+      (click)="handleDeleteCertificate()"
+      phClass="ph-trash"
+      className="p-2.5 bg-danger-base"
+    />
+  </div>
 </div>
