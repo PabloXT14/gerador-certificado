@@ -1,12 +1,13 @@
-import { Component, type OnInit } from "@angular/core"
-import { SecondaryButton } from "@/app/components/secondary-button/secondary-button"
-import { CertificateItem } from "@/app/components/certificate-item/certificate-item"
+/** biome-ignore-all lint/style/useImportType: need to import the type for the constructor */
+/** biome-ignore-all lint/style/useConsistentMemberAccessibility: need */
+
+import { Component } from "@angular/core"
 import { RouterLink } from "@angular/router"
 
-// biome-ignore lint/style/useImportType: need to import the type for the constructor
-import { CertificateService } from "@/app/services/certificate"
+import { SecondaryButton } from "@/app/components/secondary-button/secondary-button"
+import { CertificateItem } from "@/app/components/certificate-item/certificate-item"
 
-import type { Certificate } from "@/app/interfaces/certificate"
+import { CertificateService } from "@/app/services/certificate"
 
 @Component({
   selector: "app-certificates",
@@ -14,12 +15,6 @@ import type { Certificate } from "@/app/interfaces/certificate"
   templateUrl: "./certificates.html",
   styleUrl: "./certificates.css",
 })
-export class Certificates implements OnInit {
-  certificates: Certificate[] = []
-
-  constructor(private certificateService: CertificateService) {}
-
-  ngOnInit(): void {
-    this.certificates = this.certificateService.certificates
-  }
+export class Certificates {
+  constructor(public certificateService: CertificateService) {}
 }
